@@ -51,9 +51,9 @@ const Category = ({ setCategoryList }) => {
               name="description"
               value={categoryForm.description}
               onChange={changeHandler}
-              className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-auto md:w-full"></textarea>
+              className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"></textarea>
           </div>
-          <div className="w-full md:flex items-center justify-evenly">
+          <div className="w-full flex items-center justify-evenly">
             <button
               className="w-1/2 mr-4 border border-slate-400 rounded-xl p-3 text-slate-400"
               onClick={(e) => {

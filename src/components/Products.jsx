@@ -61,7 +61,7 @@ const Products = ({ categoryList , setProductsList }) => {
               name="categoryId"
               value={productsForm.categoryId}
               onChange={changeHandler}
-              className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-auto md:w-full">
+              className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full">
               <option className="bg-slate-500 text-slate-500" value="">
                 Select a Category
               </option>
