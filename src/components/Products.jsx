@@ -16,10 +16,11 @@ const Products = ({ categoryList }) => {
 
   const addNewProduct = (e) => {
     e.preventDefault();
-    setProductsList([
-      ...productsList,
+    setProductsList((prevState) => [
+      ...prevState,
       { ...productsForm, CreatedAt: new Date().toISOString() },
     ]);
+    setProductsForm({ title: "", quantity: 0, categoryId: "" });
   };
 
   return (
@@ -59,7 +60,7 @@ const Products = ({ categoryList }) => {
             </label>
             <select
               name="categoryId"
-              value={productsForm.category}
+              value={productsForm.categoryId}
               onChange={changeHandler}
               className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-auto md:w-full">
               <option className="bg-slate-500 text-slate-500" value="">
@@ -78,7 +79,7 @@ const Products = ({ categoryList }) => {
           <button
             className=" bg-slate-500 p-3 rounded-xl text-slate-300"
             onClick={addNewProduct}>
-            Add Product
+            Add New Product
           </button>
         </form>
       </div>
