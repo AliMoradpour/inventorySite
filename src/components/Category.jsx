@@ -18,7 +18,7 @@ const Category = ({ setCategoryList }) => {
       ...prevState,
       {
         ...categoryForm,
-        CreatedAt: new Date().toISOString(),
+        createdAt: new Date().toISOString(),
         id: new Date().getTime(),
       },
     ]);

@@ -1,13 +1,12 @@
 import { useState } from "react";
 
-const Products = ({ categoryList }) => {
+const Products = ({ categoryList , setProductsList }) => {
   const [productsForm, setProductsForm] = useState({
     title: "",
     quantity: 0,
     categoryId: "",
   });
 
-  const [productsList, setProductsList] = useState([]);
 
   const changeHandler = ({ target }) => {
     const { name, value } = target;
