@@ -1,5 +1,7 @@
+import { useState } from "react";
 import Category from "./components/Category";
 import Navbar from "./components/Navbar";
+import Products from "./components/Products";
 
 const products = [
   {
@@ -38,11 +40,14 @@ const categories = [
 ];
 
 function App() {
+  const [categoryList, setCategoryList] = useState([]);
+
   return (
     <div className="bg-slate-800 min-h-screen">
       <Navbar />
       <div className="container max-w-screen-sm mx-auto p-4">
-        <Category />
+        <Category setCategoryList={setCategoryList}/>
+        <Products categoryList={categoryList} />
       </div>
     </div>
   );

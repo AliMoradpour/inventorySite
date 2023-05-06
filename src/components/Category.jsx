@@ -1,12 +1,11 @@
 import { useState } from "react";
 
-const Category = () => {
+const Category = ({ setCategoryList }) => {
   const [isShow, setIsShow] = useState(false);
   const [categoryForm, setCategoryForm] = useState({
     title: "",
     description: "",
   });
-  const [categoryList, setCategoryList] = useState([]);
 
   const changeHandler = ({ target }) => {
     const { name, value } = target;
@@ -15,9 +14,13 @@ const Category = () => {
 
   const addNewCategory = (e) => {
     e.preventDefault();
-    setCategoryList([
-      ...categoryList,
-      { ...categoryForm, CreatedAt: new Date().toISOString() },
+    setCategoryList((prevState) => [
+      ...prevState,
+      {
+        ...categoryForm,
+        CreatedAt: new Date().toISOString(),
+        id: new Date().getTime(),
+      },
     ]);
     setCategoryForm({ title: "", description: "" });
   };
@@ -46,11 +49,9 @@ const Category = () => {
             </label>
             <textarea
               name="description"
-              cols="70"
-              rows="4"
               value={categoryForm.description}
               onChange={changeHandler}
-              className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full md:w-auto"></textarea>
+              className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-auto md:w-full"></textarea>
           </div>
           <div className="w-full md:flex items-center justify-evenly">
             <button
@@ -70,11 +71,11 @@ const Category = () => {
         </form>
       </div>
       <button
-        className={`text-slate-600 text-lg mb-4 font-medium ${
+        className={`text-slate-500 mb-8 font-medium bg-slate-300 p-3 rounded-xl ${
           isShow && "hidden"
         }`}
         onClick={() => setIsShow(!isShow)}>
-        Add New Category ?
+        Add New Category
       </button>
     </section>
   );
