@@ -6,12 +6,21 @@ const Category = () => {
     title: "",
     description: "",
   });
+  const [categoryList, setCategoryList] = useState([]);
 
   const changeHandler = ({ target }) => {
     const { name, value } = target;
     setCategoryForm({ ...categoryForm, [name]: value });
   };
 
+  const addNewCategory = (e) => {
+    e.preventDefault();
+    setCategoryList([
+      ...categoryList,
+      { ...categoryForm, CreatedAt: new Date().toISOString() },
+    ]);
+    setCategoryForm({ title: "", description: "" });
+  };
   return (
     <section>
       <div className={`mb-6 ${isShow ? "" : "hidden"}`} id="category-wrapper">
@@ -52,7 +61,9 @@ const Category = () => {
               }}>
               Cancel
             </button>
-            <button className="w-1/2 ml-4 bg-slate-500 p-3 rounded-xl text-slate-300">
+            <button
+              className="w-1/2 ml-4 bg-slate-500 p-3 rounded-xl text-slate-300"
+              onClick={addNewCategory}>
               Add Category
             </button>
           </div>
