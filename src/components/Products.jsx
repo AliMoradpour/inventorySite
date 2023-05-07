@@ -1,12 +1,11 @@
 import { useState } from "react";
 
-const Products = ({ categoryList , setProductsList }) => {
+const Products = ({ categoryList, setProductsList }) => {
   const [productsForm, setProductsForm] = useState({
     title: "",
     quantity: 0,
     categoryId: "",
   });
-
 
   const changeHandler = ({ target }) => {
     const { name, value } = target;
@@ -17,7 +16,7 @@ const Products = ({ categoryList , setProductsList }) => {
     e.preventDefault();
     setProductsList((prevState) => [
       ...prevState,
-      { ...productsForm, CreatedAt: new Date().toISOString() },
+      { ...productsForm, createdAt: new Date().toISOString() },
     ]);
     setProductsForm({ title: "", quantity: 0, categoryId: "" });
   };

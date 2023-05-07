@@ -1,8 +1,4 @@
 const Filter = ({onSort , onSearch , sort , searchValue}) => {
-
-
-
-
   return (
     <>
       <div className="flex items-center justify-between mb-6">
