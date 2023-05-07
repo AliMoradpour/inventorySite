@@ -1,16 +1,7 @@
-import { useState } from "react";
+const Filter = ({onSort , onSearch , sort , searchValue}) => {
 
-const Filter = ({ productsList , setFilteredProducts }) => {
-  const [sort, setSort] = useState("latest");
-  const [searchValue, setSearchValue] = useState();
 
-  const searchHandler = ({ target }) => {
-    const value = target.value.trim().toLowerCase();
-    const filteredProducts = productsList.filter((p) =>
-      p.title.toLowerCase().includes(value)
-    );
-    setFilteredProducts(filteredProducts);
-  };
+
 
   return (
     <>
@@ -23,7 +14,7 @@ const Filter = ({ productsList , setFilteredProducts }) => {
           name="search-inpt"
           className="bg-transparent rounded-xl border border-slate-500 text-slate-500"
           value={searchValue}
-          onChange={searchHandler}
+          onChange={onSearch}
         />
       </div>
       <div className="flex items-center justify-between mb-6">
@@ -34,7 +25,7 @@ const Filter = ({ productsList , setFilteredProducts }) => {
           name="sort-product"
           className="bg-transparent text-slate-400 rounded-xl "
           value={sort}
-          onChange={searchHandler}>
+          onChange={onSort}>
           <option value="" className="text-slate-300 bg-slate-500 ">
             Select a Category
           </option>
