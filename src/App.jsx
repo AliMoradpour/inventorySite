@@ -42,6 +42,26 @@ function App() {
     });
   };
 
+  useEffect(() => {
+    const savedProducts = JSON.parse(localStorage.getItem("productsList")) || [];
+    const savedCategories =
+      JSON.parse(localStorage.getItem("categoryList")) || [];
+    setProductsList(savedProducts);
+    setCategoryList(savedCategories);
+  }, []);
+
+  useEffect(() => {
+    if (productsList.length) {
+      localStorage.setItem("productsList", JSON.stringify(productsList));
+    }
+  }, [productsList]);
+
+  useEffect(() => {
+    if (categoryList.length) {
+      localStorage.setItem("categoryList", JSON.stringify(categoryList));
+    }
+  }, [categoryList]);
+
   return (
     <div className="bg-slate-800 min-h-screen">
       <Navbar />
